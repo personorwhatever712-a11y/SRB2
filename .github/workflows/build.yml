@@ -15,6 +15,7 @@ jobs:
         run: |
           mkdir build && cd build
           cmake .. \
+            -DCMAKE_POLICY_DEFAULT_CMP0006=OLD \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
             -DPNG_LIBRARY=$(brew --prefix libpng)/lib/libpng.a \
@@ -23,7 +24,6 @@ jobs:
             -DCURL_INCLUDE_DIR=$(brew --prefix curl)/include \
             -DSDL2_DIR=$(brew --prefix sdl2)/lib/cmake/SDL2 \
             -DSRB2_CONFIG_USE_SDL2=ON \
-            -DSRB2_CONFIG_MACOSX_BUNDLE=OFF \
             -DCMAKE_INSTALL_PREFIX=./install \
             -DCMAKE_SYSTEM_NAME=iOS \
             -DCMAKE_OSX_SYSROOT=iphoneos \
