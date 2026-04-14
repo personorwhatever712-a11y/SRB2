@@ -1,0 +1,30 @@
+name: Build SRB2 iOS IPA
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install dependencies
+        run: brew install cmake sdl2 sdl2_mixer sdl2_net libpng curl gme openmpt
+      
+      - name: Configure and Build
+        run: |
+          mkdir build && cd build
+          cmake .. -DSRB2_CONFIG_SYSTEM_LIBRARIES=ON -DSRB2_CONFIG_USE_SDL2=ON -G "Unix Makefiles"
+          make
+      
+      - name: Package IPA
+        run: |
+          mkdir -p Payload/SRB2.app
+          cp -r build/bin/srb2 Payload/SRB2.app/
+          zip -r srb2_ios.ipa Payload/
+      
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: srb2-ipa
+          path: srb2_ios.ipa
