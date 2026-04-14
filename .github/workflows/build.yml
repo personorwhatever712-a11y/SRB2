@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Install Base Tools
-        run: brew install cmake sdl2 sdl2_mixer libpng curl
+        run: brew install cmake sdl2
       
       - name: Configure and Build
         run: |
