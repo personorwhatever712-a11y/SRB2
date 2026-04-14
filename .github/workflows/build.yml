@@ -21,6 +21,7 @@ jobs:
             -DPNG_PNG_INCLUDE_DIR=$(brew --prefix libpng)/include \
             -DCURL_LIBRARY=$(brew --prefix curl)/lib/libcurl.a \
             -DCURL_INCLUDE_DIR=$(brew --prefix curl)/include \
+            -DSDL2_DIR=$(brew --prefix sdl2)/lib/cmake/SDL2 \
             -DSRB2_CONFIG_USE_SDL2=ON \
             -DCMAKE_SYSTEM_NAME=iOS \
             -DCMAKE_OSX_SYSROOT=iphoneos \
