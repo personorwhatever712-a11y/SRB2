@@ -16,9 +16,7 @@ jobs:
           mkdir build && cd build
           cmake .. \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
-            -DSRB2_CONFIG_USE_PNG=OFF \
-            -DSRB2_CONFIG_USE_GME=OFF \
-            -DSRB2_CONFIG_USE_OPENMPT=OFF \
+            -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
             -DSRB2_CONFIG_USE_SDL2=ON \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCMAKE_SYSTEM_NAME=iOS \
