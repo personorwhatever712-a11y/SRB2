@@ -17,24 +17,18 @@ jobs:
           cmake .. \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
-            -DPNG_LIBRARY=$(brew --prefix libpng)/lib/libpng.a \
-            -DPNG_PNG_INCLUDE_DIR=$(brew --prefix libpng)/include \
-            -DCURL_LIBRARY=$(brew --prefix curl)/lib/libcurl.a \
-            -DCURL_INCLUDE_DIR=$(brew --prefix curl)/include \
-            -DSDL2_DIR=$(brew --prefix sdl2)/lib/cmake/SDL2 \
-            -DSDL2_MIXER_INCLUDE_DIR=$(brew --prefix sdl2_mixer)/include/SDL2 \
             -DSRB2_CONFIG_USE_SDL2=ON \
-            -DSRB2_CONFIG_MACOSX_BUNDLE=OFF \
-            -DCMAKE_INSTALL_PREFIX=./install \
-            -DCMAKE_OSX_ARCHITECTURES=arm64 \
+            -DSRB2_CONFIG_MACOSX_BUNDLE=ON \
+            -DCMAKE_OSX_SYSROOT=iphoneos \
             -DCMAKE_SYSTEM_NAME=iOS \
+            -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -G "Unix Makefiles"
           make srb2
       
       - name: Package IPA
         run: |
           mkdir -p Payload/SRB2.app
-          cp -r build/bin/srb2 Payload/SRB2.app/
+          cp -r build/bin/srb2.app/* Payload/SRB2.app/ || cp -r build/bin/srb2 Payload/SRB2.app/
           zip -r srb2_ios.ipa Payload/
       
       - name: Upload Artifact
