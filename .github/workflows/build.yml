@@ -17,8 +17,8 @@ jobs:
           cmake .. \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
+            -DSRB2_CONFIG_USE_PNG=OFF \
             -DSRB2_CONFIG_USE_SDL2=ON \
-            -DSRB2_CONFIG_MACOSX_BUNDLE=ON \
             -DCMAKE_SYSTEM_NAME=iOS \
             -DCMAKE_OSX_SYSROOT=iphoneos \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
