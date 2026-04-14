@@ -8,14 +8,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Install dependencies
-        run: brew install cmake sdl2 sdl2_mixer sdl2_net libpng curl game-music-emu libopenmpt
+      - name: Install Base Tools
+        run: brew install cmake sdl2 libpng curl
       
       - name: Configure and Build
         run: |
           mkdir build && cd build
-          cmake .. -DSRB2_CONFIG_SYSTEM_LIBRARIES=ON -DSRB2_CONFIG_USE_SDL2=ON -G "Unix Makefiles"
-          make
+          cmake .. \
+            -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
+            -DSRB2_CONFIG_USE_GME=OFF \
+            -DSRB2_CONFIG_USE_OPENMPT=OFF \
+            -DSRB2_CONFIG_USE_SDL2=ON \
+            -DCMAKE_OSX_ARCHITECTURES=arm64 \
+            -DCMAKE_SYSTEM_NAME=iOS \
+            -G "Unix Makefiles"
+          make srb2
       
       - name: Package IPA
         run: |
