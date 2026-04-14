@@ -9,19 +9,16 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Install Base Tools
-        run: brew install cmake sdl2 sdl2_mixer libpng curl
+        run: brew install cmake sdl2
       
       - name: Configure and Build
         run: |
           mkdir build && cd build
           cmake .. \
-            -DCMAKE_POLICY_DEFAULT_CMP0006=OLD \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
-            -DSRB2_CONFIG_ASSET_DIRECTORY=OFF \
+            -DSRB2_CONFIG_USE_PNG=OFF \
             -DSRB2_CONFIG_USE_SDL2=ON \
-            -DSRB2_CONFIG_MACOSX_BUNDLE=OFF \
-            -DCMAKE_INSTALL_PREFIX=./install \
             -DCMAKE_SYSTEM_NAME=iOS \
             -DCMAKE_OSX_SYSROOT=iphoneos \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
