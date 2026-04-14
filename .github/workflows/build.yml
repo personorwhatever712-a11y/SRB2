@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Install Base Tools
-        run: brew install cmake sdl2 libpng curl
+        run: brew install cmake sdl2 sdl2_mixer libpng curl
       
       - name: Configure and Build
         run: |
@@ -22,7 +22,10 @@ jobs:
             -DCURL_LIBRARY=$(brew --prefix curl)/lib/libcurl.a \
             -DCURL_INCLUDE_DIR=$(brew --prefix curl)/include \
             -DSDL2_DIR=$(brew --prefix sdl2)/lib/cmake/SDL2 \
+            -DSDL2_MIXER_INCLUDE_DIR=$(brew --prefix sdl2_mixer)/include/SDL2 \
             -DSRB2_CONFIG_USE_SDL2=ON \
+            -DSRB2_CONFIG_MACOSX_BUNDLE=OFF \
+            -DCMAKE_INSTALL_PREFIX=./install \
             -DCMAKE_SYSTEM_NAME=iOS \
             -DCMAKE_OSX_SYSROOT=iphoneos \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
