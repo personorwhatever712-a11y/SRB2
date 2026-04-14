@@ -19,6 +19,8 @@ jobs:
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
             -DPNG_LIBRARY=$(brew --prefix libpng)/lib/libpng.a \
             -DPNG_PNG_INCLUDE_DIR=$(brew --prefix libpng)/include \
+            -DCURL_LIBRARY=$(brew --prefix curl)/lib/libcurl.a \
+            -DCURL_INCLUDE_DIR=$(brew --prefix curl)/include \
             -DSRB2_CONFIG_USE_SDL2=ON \
             -DSRB2_CONFIG_MACOSX_BUNDLE=OFF \
             -DCMAKE_INSTALL_PREFIX=./install \
