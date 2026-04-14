@@ -17,7 +17,8 @@ jobs:
           cmake .. \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
-            -DPNG_ARM_NEON=on \
+            -DPNG_LIBRARY=$(brew --prefix libpng)/lib/libpng.a \
+            -DPNG_PNG_INCLUDE_DIR=$(brew --prefix libpng)/include \
             -DSRB2_CONFIG_USE_SDL2=ON \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCMAKE_SYSTEM_NAME=iOS \
