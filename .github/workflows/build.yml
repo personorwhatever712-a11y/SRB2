@@ -17,10 +17,11 @@ jobs:
           cmake .. \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
-            -DPNG_ARM_NEON=on \
+            -DZLIB_LIBRARY=/Applications/Xcode_16.4.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.5.sdk/usr/lib/libz.tbd \
             -DSRB2_CONFIG_USE_SDL2=ON \
-            -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCMAKE_SYSTEM_NAME=iOS \
+            -DCMAKE_OSX_SYSROOT=iphoneos \
+            -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -G "Unix Makefiles"
           make srb2
       
