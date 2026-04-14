@@ -23,6 +23,7 @@ jobs:
             -DCURL_INCLUDE_DIR=$(brew --prefix curl)/include \
             -DSDL2_DIR=$(brew --prefix sdl2)/lib/cmake/SDL2 \
             -DSRB2_CONFIG_USE_SDL2=ON \
+            -DSRB2_CONFIG_MACOSX_BUNDLE=OFF \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCMAKE_SYSTEM_NAME=iOS \
             -G "Unix Makefiles"
