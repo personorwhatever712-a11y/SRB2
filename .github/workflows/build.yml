@@ -16,6 +16,7 @@ jobs:
           mkdir build && cd build
           cmake .. \
             -DSRB2_CONFIG_SYSTEM_LIBRARIES=OFF \
+            -DSRB2_CONFIG_SHARED_INTERNAL_LIBRARIES=ON \
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
             -DSRB2_CONFIG_USE_SDL2=ON \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
