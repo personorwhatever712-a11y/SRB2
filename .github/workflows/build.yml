@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Install Base Tools
-        run: brew install cmake sdl2 sdl2_mixer libpng curl
+        run: brew install cmake sdl2
       
       - name: Configure and Build
         run: |
@@ -19,8 +19,8 @@ jobs:
             -DSRB2_CONFIG_USE_INTERNAL_LIBRARIES=ON \
             -DSRB2_CONFIG_USE_SDL2=ON \
             -DSRB2_CONFIG_MACOSX_BUNDLE=ON \
-            -DCMAKE_OSX_SYSROOT=iphoneos \
             -DCMAKE_SYSTEM_NAME=iOS \
+            -DCMAKE_OSX_SYSROOT=iphoneos \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -G "Unix Makefiles"
           make srb2
